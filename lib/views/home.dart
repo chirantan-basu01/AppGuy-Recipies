@@ -174,30 +174,21 @@ class _HomeState extends State<Home> {
                   ),
                   Container(
                     child: GridView(
-                      padding: const EdgeInsets.all(8.0),
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        mainAxisSpacing: 10.0,
-                        // crossAxisCount: 2.0,
-                        // crossAxisSpacing: 4.0,
-                        // mainAxisSpacing: 4.0,
-                      ),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      physics: ClampingScrollPhysics(),
-                      children: List.generate(
-                        recipes.length,
-                        (index) {
-                          return RecipieTile(
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                            mainAxisSpacing: 10.0, maxCrossAxisExtent: 200.0),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        physics: ClampingScrollPhysics(),
+                        children: List.generate(recipes.length, (index) {
+                          return GridTile(
+                              child: RecipieTile(
                             title: recipes[index].label,
-                            desc: recipes[index].source,
                             imgUrl: recipes[index].image,
+                            desc: recipes[index].source,
                             url: recipes[index].url,
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                          ));
+                        })),
+                  ),
                 ],
               )),
         ),
